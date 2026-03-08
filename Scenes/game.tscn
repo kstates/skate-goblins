@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ca6ij7q1bjmyw"]
+
+[ext_resource type="PackedScene" uid="uid://3a2k62cyd074" path="res://Scenes/characters/goblin.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://dtv680ly0dm5s" path="res://Scenes/characters/obstacle.tscn" id="2_qxrlw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
+size = Vector2(355, 110)
+
+[node name="Game" type="Node2D" unique_id=1908004866]
+
+[node name="Characters" type="Node" parent="." unique_id=1555348064]
+
+[node name="Goblin" parent="Characters" unique_id=2031065013 instance=ExtResource("1_ebmjs")]
+position = Vector2(406, 397)
+
+[node name="Test level shit" type="Node" parent="." unique_id=1276767107]
+
+[node name="TestFloor" type="StaticBody2D" parent="Test level shit" unique_id=1203855644]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test level shit/TestFloor" unique_id=857686218]
+position = Vector2(504, 479)
+shape = SubResource("RectangleShape2D_2poj3")
+
+[node name="Obstacle" parent="Test level shit" unique_id=1180543153 groups=["Obstacles"] instance=ExtResource("2_qxrlw")]
+position = Vector2(651, 297)
+
+[node name="Obstacle2" parent="Test level shit" unique_id=1687557693 groups=["Obstacles"] instance=ExtResource("2_qxrlw")]
+position = Vector2(358, 297)

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://3a2k62cyd074"]
+
+[ext_resource type="Script" uid="uid://bmqb66fjfs2sc" path="res://Scenes/characters/goblin.gd" id="1_ae6q0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q75vc"]
+radius = 16.0
+height = 52.0
+
+[node name="Goblin" type="CharacterBody2D" unique_id=1131887131]
+script = ExtResource("1_ae6q0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584680115]
+shape = SubResource("CapsuleShape2D_q75vc")
