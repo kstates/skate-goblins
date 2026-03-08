@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://3a2k62cyd074" path="res://Scenes/characters/goblin.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://dtv680ly0dm5s" path="res://Scenes/characters/obstacle.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bqmq4a3t7ey2k" path="res://Scenes/character_assigner.tscn" id="3_wrm1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
 size = Vector2(355, 110)
@@ -13,9 +14,13 @@ size = Vector2(355, 110)
 [node name="Goblin" parent="Characters" unique_id=2031065013 instance=ExtResource("1_ebmjs")]
 position = Vector2(406, 397)
 
+[node name="Goblin2" parent="Characters" unique_id=1131887131 instance=ExtResource("1_ebmjs")]
+position = Vector2(582, 397)
+
 [node name="Test level shit" type="Node" parent="." unique_id=1276767107]
 
 [node name="TestFloor" type="StaticBody2D" parent="Test level shit" unique_id=1203855644]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Test level shit/TestFloor" unique_id=857686218]
 position = Vector2(504, 479)
@@ -26,3 +31,20 @@ position = Vector2(651, 297)
 
 [node name="Obstacle2" parent="Test level shit" unique_id=1687557693 groups=["Obstacles"] instance=ExtResource("2_qxrlw")]
 position = Vector2(358, 297)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1136998072]
+
+[node name="HFlowContainer" type="HFlowContainer" parent="UI" unique_id=1364930136]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CharacterAssigner" parent="UI/HFlowContainer" unique_id=682367248 instance=ExtResource("3_wrm1d")]
+layout_mode = 2
+
+[node name="CharacterAssigner2" parent="UI/HFlowContainer" unique_id=981703396 instance=ExtResource("3_wrm1d")]
+layout_mode = 2

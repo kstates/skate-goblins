@@ -6,6 +6,8 @@
 size = Vector2(45, 270)
 
 [node name="Obstacle" type="StaticBody2D" unique_id=1830718648]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_y553p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203179793]
