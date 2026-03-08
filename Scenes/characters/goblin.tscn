@@ -9,7 +9,10 @@ height = 52.0
 [node name="Goblin" type="CharacterBody2D" unique_id=1131887131]
 collision_layer = 2
 collision_mask = 5
+input_pickable = true
 script = ExtResource("1_ae6q0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584680115]
 shape = SubResource("CapsuleShape2D_q75vc")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

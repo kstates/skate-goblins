@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://ca6ij7q1bjmyw"]
 
+[ext_resource type="Script" uid="uid://b6stx555m35km" path="res://Scenes/game.gd" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://3a2k62cyd074" path="res://Scenes/characters/goblin.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://dtv680ly0dm5s" path="res://Scenes/characters/obstacle.tscn" id="2_qxrlw"]
-[ext_resource type="PackedScene" uid="uid://bqmq4a3t7ey2k" path="res://Scenes/character_assigner.tscn" id="3_wrm1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
 size = Vector2(355, 110)
 
 [node name="Game" type="Node2D" unique_id=1908004866]
+script = ExtResource("1_3dryh")
 
 [node name="Characters" type="Node" parent="." unique_id=1555348064]
 
@@ -39,12 +40,9 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 10.0
 offset_top = -52.0
+offset_right = 10.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="CharacterAssigner" parent="UI/HFlowContainer" unique_id=682367248 instance=ExtResource("3_wrm1d")]
-layout_mode = 2
-
-[node name="CharacterAssigner2" parent="UI/HFlowContainer" unique_id=981703396 instance=ExtResource("3_wrm1d")]
-layout_mode = 2

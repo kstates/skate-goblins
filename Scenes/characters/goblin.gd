@@ -2,20 +2,12 @@ extends CharacterBody2D
 
 var direction_x := 1.0 
 var speed := 5000
-var character_type: Characters = Characters.STONER
+var character_type: Constants.Characters
 @export var gravity := 40
-
-enum Characters {BASIC, STONER}
-const character_connection = {
-	Characters.BASIC: 'basic',
-	Characters.STONER: 'stoner'
-}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# TODO: I don't think this is where I want to do this
-	if character_type == Characters.STONER:
-		set_collision_mask_value(2, true)
+	set_character_type(Constants.Characters.BASIC)
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
@@ -35,4 +27,15 @@ func apply_gravity(delta: float) -> void:
 	velocity.y += gravity * delta
 	
 func is_obstacle() -> bool:
-	return character_type == Characters.STONER
+	return character_type == Constants.Characters.STONER
+	
+func set_character_type(char_type: Constants.Characters):
+	character_type = char_type
+	if character_type == Constants.Characters.STONER:
+			set_collision_mask_value(2, true)
+
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("left click"):
+		for button in get_tree().get_nodes_in_group("characterassigners"):
+			if button.selected:		
+				set_character_type(button.character_type)
