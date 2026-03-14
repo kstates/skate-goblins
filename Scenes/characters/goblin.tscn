@@ -25,5 +25,9 @@ texture = ExtResource("2_n0lmm")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=563695192]
 rect = Rect2(-12, -23, 27, 48)
 
+[node name="DeathTimer" type="Timer" parent="." unique_id=721110622]
+one_shot = true
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

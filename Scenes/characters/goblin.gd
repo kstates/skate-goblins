@@ -4,10 +4,12 @@ var direction_x := 1.0
 var speed := 5000
 var character_type: Constants.Characters
 var current_sprite: Texture
+var splat_sprite = preload("res://Images/TempImages/aseprite/splat.png")
 @export var gravity := 200
 @export var death_speed := 2.5
 var acceleration := 1.0
 var is_falling: bool = false
+var is_dead: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
-	if !is_obstacle():
+	if !is_obstacle() and !is_dead:
 		var collision = get_last_slide_collision()
 		if collision:
 			var collidor = collision.get_collider()
@@ -27,20 +29,20 @@ func _physics_process(delta: float) -> void:
 		else:
 			fall(delta)
 		move_and_slide()
-		print(acceleration)
 	
 func ambulate(delta: float) -> void:
 	acceleration = 1.0
 	velocity.x = speed * delta * direction_x
 	
 func fall(_delta: float) -> void:
-	print(acceleration)
 	acceleration = acceleration * 1.1
 	velocity.x = 0
 	
 func fall_death_check() -> void:
 	if acceleration > death_speed:
-		queue_free()
+		is_dead = true
+		$DeathTimer.start()
+		$Sprite2D.texture = splat_sprite
 	
 func apply_gravity(delta: float) -> void:
 	velocity.y += gravity * acceleration * delta
@@ -63,4 +65,8 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 # If the goblin leaves the screen, he dead
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
+
+
+func _on_death_timer_timeout() -> void:
 	queue_free()
