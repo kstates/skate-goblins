@@ -8,7 +8,7 @@ var selected: bool
 
 func assign_char_type(char_type: Constants.Characters) -> void:
 	character_type = char_type
-	$CharType.text = Constants.character_connection[character_type]
+	$CharType.text = Constants.character_data[character_type]["name"]
 	
 func set_texture(text) ->void:
 	$TextureRect.texture = text
