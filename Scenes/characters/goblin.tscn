@@ -3,22 +3,27 @@
 [ext_resource type="Script" uid="uid://bmqb66fjfs2sc" path="res://Scenes/characters/goblin.gd" id="1_ae6q0"]
 [ext_resource type="Texture2D" uid="uid://dk6nwu5jksdrq" path="res://Images/TempImages/aseprite/basic-goblin-one.png" id="2_n0lmm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q75vc"]
-radius = 16.0
-height = 52.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0lmm"]
+size = Vector2(27, 47)
 
 [node name="Goblin" type="CharacterBody2D" unique_id=1131887131]
 collision_layer = 2
 collision_mask = 5
 input_pickable = true
 script = ExtResource("1_ae6q0")
+gravity = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584680115]
-shape = SubResource("CapsuleShape2D_q75vc")
+position = Vector2(1.5, 0.5)
+shape = SubResource("RectangleShape2D_n0lmm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=925295316]
 position = Vector2(3.0000014, -9.536743e-07)
 scale = Vector2(0.6666667, 0.6666667)
 texture = ExtResource("2_n0lmm")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=563695192]
+rect = Rect2(-12, -23, 27, 48)
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
