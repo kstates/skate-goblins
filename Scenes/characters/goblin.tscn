@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3a2k62cyd074"]
 
 [ext_resource type="Script" uid="uid://bmqb66fjfs2sc" path="res://Scenes/characters/goblin.gd" id="1_ae6q0"]
+[ext_resource type="Texture2D" uid="uid://dk6nwu5jksdrq" path="res://Images/TempImages/aseprite/basic-goblin-one.png" id="2_n0lmm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q75vc"]
 radius = 16.0
@@ -14,5 +15,10 @@ script = ExtResource("1_ae6q0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584680115]
 shape = SubResource("CapsuleShape2D_q75vc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=925295316]
+position = Vector2(3.0000014, -9.536743e-07)
+scale = Vector2(0.6666667, 0.6666667)
+texture = ExtResource("2_n0lmm")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
