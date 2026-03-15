@@ -11,6 +11,7 @@ var explode_sprite = preload("res://Images/TempImages/aseprite/munitions-goblin-
 var acceleration := 1.0
 var is_falling: bool = false
 var is_dead: bool = false
+var lose_scene: PackedScene = preload("res://Scenes/lose_screen.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,8 +44,8 @@ func explode(collider) -> void:
 	await get_tree().create_timer(1).timeout
 	$Sprite2D.texture = explode_sprite
 	await get_tree().create_timer(1).timeout
-	queue_free()
 	collider.explode()
+	death()
 	
 func ambulate(delta: float) -> void:
 	acceleration = 1.0
@@ -59,7 +60,7 @@ func fall_death_check() -> void:
 		is_dead = true
 		$Sprite2D.texture = splat_sprite
 		await get_tree().create_timer(1).timeout
-		queue_free()
+		death()
 		
 func change_direction() -> void:
 	direction_x = direction_x * -1.0
@@ -96,4 +97,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 # If the goblin leaves the screen, he dead
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	death()
+	
+func death() -> void:
+	var goblins = get_tree().get_nodes_in_group("goblins")
+	if goblins.size() == 1:
+		get_tree().change_scene_to_packed(lose_scene)
 	queue_free()

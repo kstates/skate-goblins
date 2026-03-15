@@ -13,8 +13,7 @@ input_pickable = true
 script = ExtResource("1_ae6q0")
 gravity = 100
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584680115]
-position = Vector2(1.5, 0.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=584680115 groups=["goblins"]]
 shape = SubResource("RectangleShape2D_n0lmm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=925295316]
