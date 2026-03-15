@@ -18,21 +18,25 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
-	if !is_obstacle() and !is_dead:
-		var collision = get_last_slide_collision()
-		if collision:
-			var collider = collision.get_collider()
-			if (collider.has_method('is_obstacle') && collider.is_obstacle()):
-				if (character_type == Constants.Characters.MUNITIONS):
-					explode(collider)
+	match character_type:
+		Constants.Characters.DIG:
+			dig()
+		_:
+			if !is_obstacle() and !is_dead:
+				var collision = get_last_slide_collision()
+				if collision:
+					var collider = collision.get_collider()
+					if collider.has_method('is_obstacle') && collider.is_obstacle():
+						if character_type == Constants.Characters.MUNITIONS:
+							explode(collider)
+						else:
+							change_direction()
+				if is_on_floor():	
+					fall_death_check()
+					ambulate(delta)
 				else:
-					change_direction()
-		if is_on_floor():	
-			fall_death_check()
-			ambulate(delta)
-		else:
-			fall(delta)
-		move_and_slide()
+					fall(delta)
+				move_and_slide()
 		
 func explode(collider) -> void:
 	is_dead = true
@@ -53,8 +57,9 @@ func fall(_delta: float) -> void:
 func fall_death_check() -> void:
 	if acceleration > death_speed:
 		is_dead = true
-		$FallDeathTimer.start()
 		$Sprite2D.texture = splat_sprite
+		await get_tree().create_timer(1).timeout
+		queue_free()
 		
 func change_direction() -> void:
 	direction_x = direction_x * -1.0
@@ -64,6 +69,16 @@ func apply_gravity(delta: float) -> void:
 	
 func is_obstacle() -> bool:
 	return character_type == Constants.Characters.STONER
+	
+func dig() -> void:
+	var collision = get_last_slide_collision()
+	if collision:
+		var collider = collision.get_collider()
+		if collider is TileMapLayer:
+			var tile_coords = collider.local_to_map(position)
+			tile_coords.y = tile_coords.y + 2
+			collider.erase_cell(tile_coords)
+	move_and_slide()
 	
 func set_character_type(char_type: Constants.Characters):
 	if not is_dead:
@@ -81,7 +96,4 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 
 # If the goblin leaves the screen, he dead
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
-
-func _on_fall_death_timer_timeout() -> void:
 	queue_free()

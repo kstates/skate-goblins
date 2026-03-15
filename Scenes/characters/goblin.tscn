@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dk6nwu5jksdrq" path="res://Images/TempImages/aseprite/basic-goblin-one.png" id="2_n0lmm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n0lmm"]
-size = Vector2(27, 47)
+size = Vector2(14, 47)
 
 [node name="Goblin" type="CharacterBody2D" unique_id=1131887131]
 collision_layer = 2
@@ -25,9 +25,5 @@ texture = ExtResource("2_n0lmm")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=563695192]
 rect = Rect2(-12, -23, 27, 48)
 
-[node name="FallDeathTimer" type="Timer" parent="." unique_id=721110622]
-one_shot = true
-
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="timeout" from="FallDeathTimer" to="." method="_on_fall_death_timer_timeout"]
