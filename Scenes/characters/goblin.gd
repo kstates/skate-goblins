@@ -5,6 +5,7 @@ var speed := 5000
 var character_type: Constants.Characters
 var current_sprite: Texture
 var splat_sprite = preload("res://Images/TempImages/aseprite/splat.png")
+var explode_sprite = preload("res://Images/TempImages/aseprite/munitions-goblin-exploded.png")
 @export var gravity := 200
 @export var death_speed := 35
 var acceleration := 1.0
@@ -20,15 +21,26 @@ func _physics_process(delta: float) -> void:
 	if !is_obstacle() and !is_dead:
 		var collision = get_last_slide_collision()
 		if collision:
-			var collidor = collision.get_collider()
-			if (collidor.has_method('is_obstacle') && collidor.is_obstacle()):
-				direction_x = direction_x * -1.0
+			var collider = collision.get_collider()
+			if (collider.has_method('is_obstacle') && collider.is_obstacle()):
+				if (character_type == Constants.Characters.MUNITIONS):
+					explode(collider)
+				else:
+					change_direction()
 		if is_on_floor():	
 			fall_death_check()
 			ambulate(delta)
 		else:
 			fall(delta)
 		move_and_slide()
+		
+func explode(collider) -> void:
+	is_dead = true
+	await get_tree().create_timer(1).timeout
+	$Sprite2D.texture = explode_sprite
+	await get_tree().create_timer(1).timeout
+	queue_free()
+	collider.explode()
 	
 func ambulate(delta: float) -> void:
 	acceleration = 1.0
@@ -41,8 +53,11 @@ func fall(_delta: float) -> void:
 func fall_death_check() -> void:
 	if acceleration > death_speed:
 		is_dead = true
-		$DeathTimer.start()
+		$FallDeathTimer.start()
 		$Sprite2D.texture = splat_sprite
+		
+func change_direction() -> void:
+	direction_x = direction_x * -1.0
 	
 func apply_gravity(delta: float) -> void:
 	velocity.y += gravity * acceleration * delta
@@ -67,6 +82,5 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
-
-func _on_death_timer_timeout() -> void:
+func _on_fall_death_timer_timeout() -> void:
 	queue_free()
