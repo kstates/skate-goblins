@@ -6,7 +6,7 @@ var character_type: Constants.Characters
 var current_sprite: Texture
 var splat_sprite = preload("res://Images/TempImages/aseprite/splat.png")
 @export var gravity := 200
-@export var death_speed := 2.5
+@export var death_speed := 35
 var acceleration := 1.0
 var is_falling: bool = false
 var is_dead: bool = false

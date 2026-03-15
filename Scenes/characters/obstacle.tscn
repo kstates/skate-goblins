@@ -1,14 +1,23 @@
-[gd_scene format=3 uid="uid://dtv680ly0dm5s"]
+[gd_scene format=4 uid="uid://dtv680ly0dm5s"]
 
 [ext_resource type="Script" uid="uid://bsueqxeuuswah" path="res://Scenes/characters/obstacle.gd" id="1_y553p"]
+[ext_resource type="Texture2D" uid="uid://c21p7aopxq0v0" path="res://Images/TempImages/aseprite/obstacles.png" id="2_0efem"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwa12"]
-size = Vector2(45, 270)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r6e5t"]
+texture = ExtResource("2_0efem")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[node name="Obstacle" type="StaticBody2D" unique_id=1830718648]
-collision_layer = 4
-collision_mask = 2
+[sub_resource type="TileSet" id="TileSet_k1md2"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_r6e5t")
+
+[node name="Obstacle" type="TileMapLayer" unique_id=335453657]
+tile_map_data = PackedByteArray("AAD///z/AAAAAAAAAAD///3/AAAAAAEAAAD///7/AAAAAAEAAAD/////AAAAAAEAAAD//wAAAAAAAAEAAAD//wEAAAAAAAEAAAD//wIAAAAAAAIAAAA=")
+tile_set = SubResource("TileSet_k1md2")
 script = ExtResource("1_y553p")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=203179793]
-shape = SubResource("RectangleShape2D_rwa12")

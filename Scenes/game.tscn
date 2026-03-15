@@ -1,11 +1,60 @@
-[gd_scene format=3 uid="uid://ca6ij7q1bjmyw"]
+[gd_scene format=4 uid="uid://ca6ij7q1bjmyw"]
 
 [ext_resource type="Script" uid="uid://b6stx555m35km" path="res://Scenes/game.gd" id="1_3dryh"]
 [ext_resource type="PackedScene" uid="uid://3a2k62cyd074" path="res://Scenes/characters/goblin.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://dtv680ly0dm5s" path="res://Scenes/characters/obstacle.tscn" id="2_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://14rqxnnvcrs4" path="res://Images/TempImages/aseprite/terrain.png" id="4_3dryh"]
+[ext_resource type="Texture2D" uid="uid://c21p7aopxq0v0" path="res://Images/TempImages/aseprite/obstacles.png" id="5_wowpa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2poj3"]
-size = Vector2(355, 110)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
+texture = ExtResource("4_3dryh")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i6g32"]
+texture = ExtResource("5_wowpa")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_i6g32"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_wowpa")
+sources/1 = SubResource("TileSetAtlasSource_i6g32")
 
 [node name="Game" type="Node2D" unique_id=1908004866]
 script = ExtResource("1_3dryh")
@@ -13,38 +62,28 @@ script = ExtResource("1_3dryh")
 [node name="Characters" type="Node" parent="." unique_id=1555348064]
 
 [node name="Goblin" parent="Characters" unique_id=2031065013 instance=ExtResource("1_ebmjs")]
-position = Vector2(109, 258)
+position = Vector2(109, 264)
 
 [node name="Goblin2" parent="Characters" unique_id=1131887131 instance=ExtResource("1_ebmjs")]
-position = Vector2(283, 258)
+position = Vector2(283, 264)
 
 [node name="Goblin3" parent="Characters" unique_id=707791079 instance=ExtResource("1_ebmjs")]
-position = Vector2(174, 258)
+position = Vector2(174, 264)
 
 [node name="Goblin4" parent="Characters" unique_id=835277243 instance=ExtResource("1_ebmjs")]
-position = Vector2(350, 258)
+position = Vector2(350, 264)
 
 [node name="Test level shit" type="Node" parent="." unique_id=1276767107]
 
-[node name="TestFloor" type="StaticBody2D" parent="Test level shit" unique_id=1203855644]
-collision_mask = 0
+[node name="TileMapLayer" type="TileMapLayer" parent="Test level shit" unique_id=320796344]
+tile_map_data = PackedByteArray("AAAcACAAAAABAAAAAAAdACAAAAABAAAAAAAeACAAAAABAAAAAAAfACAAAAABAAAAAAAgACAAAAABAAAAAAAhACAAAAABAAAAAAAiACAAAAABAAAAAAAjACAAAAABAAAAAAAkACAAAAABAAAAAAAlACAAAAABAAAAAAAmACAAAAABAAAAAAAnACAAAAABAAAAAAAoACAAAAACAAAAAAAcACEAAAABAAEAAAAcACIAAAABAAEAAAAcACMAAAABAAEAAAAcACQAAAABAAEAAAAcACUAAAABAAIAAAAdACUAAAABAAIAAAAeACUAAAABAAIAAAAfACUAAAABAAIAAAAgACUAAAABAAIAAAAhACUAAAABAAIAAAAiACUAAAABAAIAAAAjACUAAAABAAIAAAAkACUAAAABAAIAAAAlACUAAAABAAIAAAAmACUAAAABAAIAAAAnACUAAAABAAIAAAAoACUAAAACAAIAAAAoACQAAAACAAEAAAAoACMAAAACAAEAAAAnACMAAAABAAEAAAAnACIAAAABAAEAAAAoACIAAAACAAEAAAAoACEAAAACAAEAAAAnACEAAAABAAEAAAAnACQAAAABAAEAAAAmACQAAAABAAEAAAAlACQAAAABAAEAAAAkACQAAAABAAEAAAAjACQAAAABAAEAAAAiACQAAAABAAEAAAAhACQAAAABAAEAAAAgACQAAAABAAEAAAAfACQAAAABAAEAAAAeACQAAAABAAEAAAAdACQAAAABAAEAAAAdACMAAAABAAEAAAAdACIAAAABAAEAAAAdACEAAAABAAEAAAAeACEAAAABAAEAAAAfACEAAAABAAEAAAAgACEAAAABAAEAAAAhACEAAAABAAEAAAAiACEAAAABAAEAAAAjACEAAAABAAEAAAAkACEAAAABAAEAAAAlACEAAAABAAEAAAAmACEAAAABAAEAAAAmACIAAAABAAEAAAAmACMAAAABAAEAAAAlACMAAAABAAEAAAAkACMAAAABAAEAAAAjACMAAAABAAEAAAAiACMAAAABAAEAAAAhACMAAAABAAEAAAAgACMAAAABAAEAAAAfACMAAAABAAEAAAAeACMAAAABAAEAAAAeACIAAAABAAEAAAAfACIAAAABAAEAAAAgACIAAAABAAEAAAAhACIAAAABAAEAAAAiACIAAAABAAEAAAAjACIAAAABAAEAAAAkACIAAAABAAEAAAAlACIAAAABAAEAAAAVACAAAAAAAAAAAAAWACAAAAABAAAAAAAXACAAAAABAAAAAAAYACAAAAABAAAAAAAZACAAAAABAAAAAAAaACAAAAABAAAAAAAbACAAAAABAAAAAAAWACEAAAABAAEAAAAWACIAAAABAAEAAAAWACMAAAABAAEAAAAXACMAAAABAAEAAAAXACQAAAABAAEAAAAWACQAAAABAAEAAAAYACQAAAABAAEAAAAZACQAAAABAAEAAAAaACQAAAABAAEAAAAbACQAAAABAAEAAAAbACMAAAABAAEAAAAbACIAAAABAAEAAAAbACEAAAABAAEAAAAaACEAAAABAAEAAAAZACEAAAABAAEAAAAYACEAAAABAAEAAAAXACEAAAABAAEAAAAXACIAAAABAAEAAAAYACIAAAABAAEAAAAZACIAAAABAAEAAAAaACIAAAABAAEAAAAaACMAAAABAAEAAAAZACMAAAABAAEAAAAYACMAAAABAAEAAAAVACEAAAAAAAEAAAAVACIAAAAAAAEAAAAVACMAAAAAAAEAAAAVACQAAAAAAAEAAAAVACUAAAAAAAIAAAAWACUAAAABAAIAAAAXACUAAAABAAIAAAAYACUAAAABAAIAAAAZACUAAAABAAIAAAAaACUAAAABAAIAAAAbACUAAAABAAIAAAAYABUAAAAAAAAAAAAZABUAAAABAAAAAAAaABYAAAACAAEAAAAaABUAAAACAAAAAAAYABYAAAAAAAEAAAAZABYAAAABAAEAAAAYABcAAAAAAAIAAAAZABcAAAABAAIAAAAaABcAAAACAAIAAAACABIAAAAAAAAAAAADABIAAAABAAAAAAAEABIAAAABAAAAAAAFABIAAAABAAAAAAAGABIAAAABAAAAAAAHABIAAAABAAAAAAAIABIAAAABAAAAAAAJABIAAAABAAAAAAAKABIAAAABAAAAAAALABIAAAABAAAAAAAMABIAAAABAAAAAAANABIAAAABAAAAAAAOABIAAAABAAAAAAAPABIAAAABAAAAAAAQABIAAAABAAAAAAARABIAAAABAAAAAAASABIAAAABAAAAAAATABIAAAABAAAAAAAUABIAAAABAAAAAAAVABIAAAABAAAAAAAWABIAAAABAAAAAAAXABIAAAACAAAAAAAXABMAAAACAAIAAAAWABMAAAABAAIAAAAVABMAAAABAAIAAAAUABMAAAABAAIAAAATABMAAAABAAIAAAASABMAAAABAAIAAAARABMAAAABAAIAAAAQABMAAAABAAIAAAAPABMAAAABAAIAAAAOABMAAAABAAIAAAANABMAAAABAAIAAAAMABMAAAABAAIAAAALABMAAAABAAIAAAAKABMAAAABAAIAAAAJABMAAAABAAIAAAAIABMAAAABAAIAAAAHABMAAAABAAIAAAAGABMAAAABAAIAAAAFABMAAAABAAIAAAAEABMAAAABAAIAAAADABMAAAABAAIAAAACABMAAAAAAAIAAAA=")
+tile_set = SubResource("TileSet_i6g32")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test level shit/TestFloor" unique_id=857686218]
-position = Vector2(205, 338)
-shape = SubResource("RectangleShape2D_2poj3")
+[node name="Obstacle" parent="Test level shit" unique_id=387132441 instance=ExtResource("2_qxrlw")]
+position = Vector2(60, 241)
 
-[node name="Obstacle" parent="Test level shit" unique_id=1180543153 groups=["Obstacles"] instance=ExtResource("2_qxrlw")]
-position = Vector2(219, 159)
-
-[node name="Obstacle2" parent="Test level shit" unique_id=1687557693 groups=["Obstacles"] instance=ExtResource("2_qxrlw")]
-position = Vector2(59, 156)
-
-[node name="TestFloor2" type="StaticBody2D" parent="Test level shit" unique_id=369092325]
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test level shit/TestFloor2" unique_id=1819863146]
-position = Vector2(501, 582)
-shape = SubResource("RectangleShape2D_2poj3")
+[node name="Obstacle2" parent="Test level shit" unique_id=335453657 instance=ExtResource("2_qxrlw")]
+position = Vector2(225, 240)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1136998072]
 

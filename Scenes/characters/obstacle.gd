@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends TileMapLayer
 
 func is_obstacle() -> bool:
 	return true

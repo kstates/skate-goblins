@@ -1,6 +1,6 @@
 class_name Constants
 
-enum Characters {BASIC, STONER, DIG, RAMP, BOULDER}
+enum Characters {BASIC, STONER, DIG, RAMP, BOULDER, MUNITIONS}
 const character_data = {
 	Characters.BASIC: {
 		"name": 'Basic',
@@ -21,5 +21,9 @@ const character_data = {
 	Characters.BOULDER: {
 		"name": 'Boulder',
 		"image": "res://Images/TempImages/aseprite/boulder-goblin-one.png"
+	},
+	Characters.MUNITIONS: {
+		"name": 'Munitions',
+		"image": "res://Images/TempImages/aseprite/munitions-goblin-one.png"
 	}
 }
