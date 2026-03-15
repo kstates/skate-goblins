@@ -66,10 +66,11 @@ func is_obstacle() -> bool:
 	return character_type == Constants.Characters.STONER
 	
 func set_character_type(char_type: Constants.Characters):
-	character_type = char_type
-	# If we're an obstacle, we want to be on the obstacle layer
-	set_collision_layer_value(3, is_obstacle())
-	$Sprite2D.texture = load(Constants.character_data[character_type]["image"])
+	if not is_dead:
+		character_type = char_type
+		# If we're an obstacle, we want to be on the obstacle layer
+		set_collision_layer_value(3, is_obstacle())
+		$Sprite2D.texture = load(Constants.character_data[character_type]["image"])
 
 # If a character assigner button is clicked when the goblin is clicked, change to that character type
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
